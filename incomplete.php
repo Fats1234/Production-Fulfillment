@@ -82,10 +82,12 @@
          $records=explode("\n",$data);
          $logfile=fopen("/var/www/html/ibm/logs/log.txt","a") or die("Unable to write to log file!");
          fwrite($logfile,"DATA: ".$data."\n");
+         
          //we need to get the fulfillment file's delimeter
          $query="SELECT fulfillment_file_delimeter FROM fulfillment_files WHERE fulfillment_file_id=$fulfillFileID"
          $result=$database->query($query);
          list($delimeter)=$result->fetch_row();
+         
          //grab the order of the fields from database
          $query="SELECT field_id FROM fulfillment_field_names WHERE fulfillment_file_id=$fulfillFileID ORDER BY fulfillment_file_order";
          $results=$database->query($query);

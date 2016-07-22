@@ -7,8 +7,8 @@ require_once('FieldMapper.php');
 
 class FieldValuesMapper extends DataMapper{
 
-   public function getByID($fieldValueID){
-      $query="SELECT field_id,field_value FROM fulfillment_field_values WHERE field_value_id=$fieldValueID";
+   public function getByID($id){
+      $query="SELECT field_id,field_value FROM fulfillment_field_values WHERE field_value_id=$id";
       if($fieldValueResult=$this->adapter->query($query)){
          list($fieldID,$fieldValue) = $fieldValueResult->fetch_row();
       }
@@ -16,7 +16,7 @@ class FieldValuesMapper extends DataMapper{
       $fm = new FieldMapper($this->adapter);
       $fieldObj = $fm->getByID($fieldID);
       
-      $fieldValueObj = new FieldValue($fieldValueID,$fieldValue,$fieldObj);
+      $fieldValueObj = new FieldValue($fieldValue,$fieldObj,$id);
       
       return $fieldValueObj;
    }
@@ -26,7 +26,10 @@ class FieldValuesMapper extends DataMapper{
       if($results = $this->adapater->query($query)){
          $fieldValuesMatched = array();
          while($match = $results->fetch_assoc()){
-            $fieldValueObj = new FieldValue($match['field_value_id'],$match['field_value'],$match['field_id']);
+            $fm = new FieldMapper($this->adapter);
+            $fieldObj = $fm->getByID($match['field_id']);
+            
+            $fieldValueObj = new FieldValue($match['field_value'],$fieldObj,$match['field_value_id']);
             $fieldValuesMatched[] = $fieldValueObj;
          }
       }

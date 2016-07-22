@@ -1,21 +1,21 @@
 <?php
 
-require_once("Record.php");
+require_once('DataObject.php');
+require_once('Record.php');
 
-class Set{
-   private $setID;
+class Set extends DataObject{
    private $dateStart;
    private $dateEnd;
    private $dateComplete;
-   private $batchID;
    private $records=array();
+   private $systemType; //systemType Object
    
-   public function __construct($setID,$startDate,$endDate,$completeDate,$batchID,$records){
-      $this->setID = $setID;
+   public function __construct($startDate,$endDate,$completeDate,SystemType $systemType,$records,$id=null){
+      $this->id = $id;
       $this->dateStart = $startDate;
       $this->dateEnd = $endDate;
       $this->dateComplete = $completeDate;
-      $this->batchID = $batchID;
+      $this->systemType = $systemType;
       $this->records = $records;
    }
 }

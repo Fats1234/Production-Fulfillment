@@ -1,9 +1,18 @@
 <?php
 
-class SystemType{
-   private $systemTypeID;
+require_once('DataObject.php');
+
+class SystemType extends DataObject{
    private $name;
-   private $description
+   private $description;
+   private $fields=array;  //array of field objects for this system type
+   
+   public function __construct($name,$desc,$fields,$id=null){
+      $this->id = $id;
+      $this->name = $name;
+      $this->description = $desc;
+      $this->fields = $fields;
+   }
 }
 
 ?>

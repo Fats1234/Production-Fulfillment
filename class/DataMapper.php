@@ -7,7 +7,7 @@ abstract class DataMapper{
       $this->adapter = $dbadapter;
    }
    
-   abstract public function GetByID($id);
+   abstract public function getByID($id);
 }
 
 ?>

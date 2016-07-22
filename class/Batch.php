@@ -1,8 +1,10 @@
 <?php
-require_once("Sets.php");
-require_once("Records.php");
 
-class Batch{
+require_once('DataObject.php');
+require_once('Sets.php');
+require_once('Records.php');
+
+class Batch extends DataObject{
    private $batchID;
    private $dateStart;
    private $dateEnd;

@@ -1,17 +1,18 @@
 <?php
 
-class Field{
-   private $fieldID;
+require_once('DataObject.php');
+
+class Field extends DataObject{
    private $name;
    private $description;
-   private $fieldOrder;
+   private $displayOrder;
    private $checkDuplicate;
    
-   public function __construct($fieldID,$name,$description,$fieldOrder,$checkDuplicate){
-      $this->fieldID = $fieldID;
+   public function __construct($name,$description,$dispOrder,$checkDuplicate,$id=null){
+      $this->id = $id;
       $this->name = $name;
       $this->description = $description;
-      $this->fieldOrder = $fieldOrder;
+      $this->displayOrder = $dispOrder;
       $this->checkDuplicate = $checkDuplicate;
    }
 }

@@ -1,23 +1,22 @@
 <?php
 
-class Record{
-   private $recordID;
+require_once('DataObject.php');
+require_once('SystemType.php');
+
+class Record extends DataObject{
    private $dateFulfilled;
-   private $setID;
    private $isDeleted;
-   private $systemTypeID;
-   private $fulfillmentFileID;   
-   private $fieldValues=array();
+   private $systemType;  //systemType object
+   private $fieldValues=array(); //array of fieldValues Objects
    
-   public function __construct($id,$date,$setID,$isDeleted,$systemType,$fulfillmentFileID,$fieldValues){
-      $this->recordID=$id;
+   public function __construct($date,SystemType $systemType,$fieldValues,$isDeleted=0,$id=NULL){
+      $this->id=$id;
       $this->dateFulfilled=$date;
-      $this->setID=$setID;
       $this->isDeleted=$isDeleted;
-      $this->systemTypeID=$systemType;
-      $this->fulfillmentFileID=$fulfillmentFileID;
+      $this->systemType=$systemType;
       $this->fieldValues=$fieldValues;
    }
+   
 }
 
 ?>
