@@ -43,6 +43,16 @@ class SetMapper extends DataMapper{
    public function getIncomplete(){
       return $this->getByID(0);
    }
+   
+   public function create($recordObjArr){
+      $completionDate = date("Y-m-d-His");
+      $query = "INSERT INTO fulfillment_sets SET".
+                        " set_completion_date='$completionDate'";
+      
+      if($this->adapater->query($query)){
+         $newSetID=$this->adapter->insert_id;
+      }
+   }
 }
 
 ?>

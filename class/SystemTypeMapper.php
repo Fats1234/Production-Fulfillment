@@ -14,7 +14,7 @@ class SystemTypeMapper extends DataMapper{
       
       //get fields associated with this system type
       $query="SELECT field_id FROM fulfillment_fields WHERE system_type_id=$id";
-      if($result=$this->adapter->query($query){
+      if($result=$this->adapter->query($query)){
          $fm = new FieldMapper($this->adapter);
          $systemFieldsArr=array();
          while(list($fieldID) = $result->fetch_row()){

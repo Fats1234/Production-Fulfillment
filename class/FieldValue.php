@@ -12,6 +12,14 @@ class FieldValue extends DataObject{
       $this->value = $value;
       $this->field = $field;
    }
+   
+   public function getValue(){
+      return $this->value;
+   }
+   
+   public function getField(){
+      return $this->field;
+   }
 }
 
 ?>

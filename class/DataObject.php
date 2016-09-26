@@ -1,7 +1,7 @@
 <?php
 
 abstract class DataObject{
-   private $id;
+   protected $id;
    
    public function getDataID(){
       return $this->id;

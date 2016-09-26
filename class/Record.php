@@ -17,6 +17,21 @@ class Record extends DataObject{
       $this->fieldValues=$fieldValues;
    }
    
+   public function getDateFulfilled(){
+      return $this->dateFulfilled;
+   }
+   
+   public function isDeleted(){
+      return $this->isDeleted;
+   }
+   
+   public function getSystemType(){
+      return $this->systemType;
+   }
+   
+   public function getFieldValues(){
+      return $this->fieldValues;
+   }
 }
 
 ?>

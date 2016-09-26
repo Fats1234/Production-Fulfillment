@@ -3,7 +3,7 @@
 require_once('Record.php');
 require_once('FieldValue.php');
 require_once('DataMapper.php');
-require_once('FieldValuesMapper.php');
+require_once('FieldValueMapper.php');
 
 class RecordMapper extends DataMapper{
    public function getByID($id,$searchDeleted=0){
@@ -43,9 +43,9 @@ class RecordMapper extends DataMapper{
                      ",fulfillment_date='".$record->getFulfillmentDate()."'";
       
       if($this->adapter->query($query)){
-         $newRecordID=$this->adapater->insert_id);
+         $newRecordID=$this->adapater->insert_id;
          
-         foreach(&$record->getFieldValues() as &$fieldValue){
+         foreach($record->getFieldValues() as $fieldValue){
             $query="INSERT INTO fulfillment_field_values SET".
                            " field_id=".$fieldValue->getField()->getDataID().
                            ",record_id=".$newRecordID.

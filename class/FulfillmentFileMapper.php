@@ -23,7 +23,7 @@ class FulfillmentFileMapper extends DataMapper{
       $query="SELECT field_id FROM fulfillment_file_field_order  
                   WHERE fulfillment_file_id=$id ORDER BY fulfillment_file_field_order";
       if($result=$this->adapter->query($query)){
-         $fieldsArr=array()
+         $fieldsArr=array();
          $fm = new FieldMapper($this->adapter);
          while(list($fieldID)=$result->fetch_row()){
             $fieldsArr[]=$fm->getByID($fieldID);

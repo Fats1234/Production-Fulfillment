@@ -1,4 +1,7 @@
 <?php
+   require_once "HTML/Table.php";
+   require_once('class/Record.php');
+
    function startForm($action,$method,$name="form",$newWindow=FALSE,$refresh=FALSE){
       $formStr="<form action=\"$action\" method=\"$method\" name=\"$name\" id=\"$name\"";
       if($refresh){
@@ -59,6 +62,34 @@
    
    function genHidden($fieldname,$value){
       return "<input type=\"hidden\" name=\"$fieldname\" value=\"$value\">\n";
+   }
+   
+   function genRecordsTable($fields,$records){
+      $attrs=array('border' => '1');
+      $recordTable = new HTML_TABLE($attrs);
+      
+      $col=0;
+      $headerRow=0;
+      $recordTable->setCellContents($headerRow,$col++,"Record No.");
+      $recordTable->setCellContents($headerRow,$col++,"<input type=\"checkbox\" onclick=\"checkAll(this)\" checked>)";
+      $recordTable->setCellContents($headerRow,$col++,"Date Fulfilled");
+      foreach($fields as $field){
+         $recordTable->setCellContents($headerRow,$col+$field->getDisplayOrder(),$field->getName());
+      }
+      
+      foreach($records as $index => $record){
+         $col = 0;
+         $recNo = $index+1
+         
+         $recordTable->setCellContents($recNo,$col++,$recNo);
+         $recordTable->setCellContents($recNo,$col++,genCheckBox("recordID",$record->getDataID()));
+         $recordTable->setCellContents($recNo,$col++,$record->getDateFulfilled());
+         foreach($record->getFieldValues() as $fieldValue){
+            $recordTable->setCellContents($recNo,$col+$fieldValue->getField()->getDisplayOrder(),$fieldValue->getValue();
+         }
+      }
+      
+      return $recordTable->toHTML();
    }
 
 ?>

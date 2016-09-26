@@ -15,6 +15,23 @@ class Field extends DataObject{
       $this->displayOrder = $dispOrder;
       $this->checkDuplicate = $checkDuplicate;
    }
+   
+   public function getName(){
+      return $this->name;
+   }
+   
+   public function getDescription(){
+      return $this->description;
+   }
+   
+   public function getDisplayOrder(){
+      return $this->displayOrder;
+   }
+   
+   public function checkDuplicateLevel(){
+      return $this->checkDuplicate;
+   }
+   
 }
 
 ?>

@@ -18,6 +18,26 @@ class Set extends DataObject{
       $this->systemType = $systemType;
       $this->records = $records;
    }
+   
+   public function getDateStart(){
+      return $this->dateStart;
+   }
+   
+   public function getDateEnd(){
+      return $this->dateEnd;
+   }
+   
+   public function getDateComplete(){
+      return $this->dateComplete;
+   }
+   
+   public function getRecords(){
+      return $this->records;
+   }
+   
+   public function getSysType(){
+      return $this->systemType;
+   }
 }
 
 ?>
